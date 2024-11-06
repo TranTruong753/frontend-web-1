@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "ant-design-vue": "^4.2.5",
+    "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "bootstrap-vue-next": "^0.25.8",
     "font-awesome": "^4.7.0",

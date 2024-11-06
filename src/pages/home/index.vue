@@ -2,10 +2,52 @@
 import CardCompany from '@/components/companies/cardCompany.vue';
 import CardProduct from '@/components/jobs/cardJob.vue';
 
+import { ref, onMounted } from 'vue';
+import axios from 'axios';
+
+const apiData = ref(null);
+const error = ref(null);
+
+const fetchData = async () => {
+    try {
+        const response = await axios.get('https://localhost:7092/api/Home'); // Thay bằng URL của bạn
+        apiData.value = response.data;
+    } catch (err) {
+        error.value = err;
+        console.error("Lỗi khi gọi API:", err);
+    }
+};
+
+onMounted(() => {
+    fetchData();
+});
+
 
 </script>
 
+
+
+
 <template>
+    <div>
+        <h1>Chi tiết sản phẩm</h1>
+        <!-- Kiểm tra nếu có lỗi khi gọi API -->
+        <div v-if="error">
+            <p class="error-message">Lỗi khi tải dữ liệu: {{ error.message }}</p>
+        </div>
+
+        <!-- Kiểm tra nếu dữ liệu chưa tải xong -->
+        <div v-else-if="!apiData">
+            <p>Đang tải dữ liệu...</p>
+        </div>
+
+        <!-- Hiển thị dữ liệu sau khi tải xong -->
+        <div v-else>
+            <p><strong>ID:</strong> {{ apiData.id }}</p>
+            <p><strong>Tên:</strong> {{ apiData.name }}</p>
+            <p><strong>Giá:</strong> {{ apiData.price }} VND</p>
+        </div>
+    </div>
     <!-- hero -->
     <section class="section-0 lazy d-flex bg-image-style dark align-items-center "
         data-bg="/src/assets/img/banner5.jpg">
