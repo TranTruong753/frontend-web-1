@@ -23,6 +23,13 @@ export default defineConfig({
   server: {
     port: 3000, // Đổi port nếu cần thiết
     open: true, // Tự động mở trình duyệt khi khởi động server
+    proxy: {
+      '/api': {
+        target: 'https://localhost:7283',  // Địa chỉ backend
+        changeOrigin: true,
+        secure: false, // Nếu bạn đang sử dụng HTTPS, đổi thành true
+      }
+    }
   },
   // Tùy chọn CSS để nén hoặc xử lý các file CSS
   css: {

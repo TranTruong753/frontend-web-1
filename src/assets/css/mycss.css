@@ -122,3 +122,8 @@ a {
 .carousel-indicators .active {
     background-color: #d34127; /* Màu của nút đang chọn */
 }
+
+.swal2-title:after {
+    content: none;
+    /* background-color:transparent !important; */
+}

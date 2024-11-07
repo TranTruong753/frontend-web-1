@@ -9221,7 +9221,7 @@ ul li {
   list-style: none;
 }
 span {
-  font-size: 1.25em;
+  /* font-size: 1.25em; */
 }
 p, q {
   font-size: 16px;
